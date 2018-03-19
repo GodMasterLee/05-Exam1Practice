@@ -147,24 +147,25 @@ def problem3a(window, point, n):
     # ------------------------------------------------------------------
     x = point.x
     y = point.y
-    t = 1
+    thickness = -1
     sum = 0
-
+    stable = 49
     for k in range(n):
-        x = x + 20
-        y = y + 10
-        Spoint = rg.Point(x, y)
-        Epoint = rg.Point(x, y + 50)
-        line = rg.Line(Spoint, Epoint)
-        if t < 13:
-            t = t + 2
+        start = rg.Point(x + 20 * k,y + 10 * k)
+        end = rg.Point(x + 20 * k, 50 + y + 10 * k)
+        line = rg.Line(start,end)
+        if thickness < 13:
+            thickness = thickness + 2
+            sum = sum + 1 + 2 * k
         else:
-            t = 13
-        line.thickness = t
-        sum = sum + t
+            thickness = 13
+            sum = sum + 13
+        line.thickness = thickness
         line.attach_to(window)
-        window.render()
-        return sum
+        window.render(0.07)
+    return sum
+
+
 
 
 
