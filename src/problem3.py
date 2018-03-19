@@ -2,8 +2,8 @@
 PRACTICE Test 1, problem 3.
 
 Authors: David Mutchler, Valerie Galluzzi, Mark Hays, Amanda Stouder,
-         their colleagues and PUT_YOUR_NAME_HERE.
-"""  # TODO: 1. PUT YOUR NAME IN THE ABOVE LINE.
+         their colleagues and Bowen Li.
+"""  # Done: 1. PUT YOUR NAME IN THE ABOVE LINE.
 
 import rosegraphics as rg
 
@@ -145,6 +145,27 @@ def problem3a(window, point, n):
     #    DIFFICULTY:      7 or 8
     #    TIME ESTIMATE:   20 to 35 minutes.
     # ------------------------------------------------------------------
+    x = point.x
+    y = point.y
+    t = 1
+    sum = 0
+
+    for k in range(n):
+        x = x + 20
+        y = y + 10
+        Spoint = rg.Point(x, y)
+        Epoint = rg.Point(x, y + 50)
+        line = rg.Line(Spoint, Epoint)
+        if t < 13:
+            t = t + 2
+        else:
+            t = 13
+        line.thickness = t
+        sum = sum + t
+        line.attach_to(window)
+        window.render()
+        return sum
+
 
 
 def run_test_problem3b():
